@@ -38,7 +38,7 @@
             <span>Choose a letter from A to Z</span>
         </div>
         <div class="hint">
-            <p>
+            <p id="#hint">
                 <!-- document.getElementByID(.hint) -->
             </p>
         </div>
@@ -48,14 +48,14 @@
         <h5>Letters Guessed</h5>
 
         <div class="lettersGuessed">
-            <span class="letterGY">
+            <span id="letterGY">
                 <!-- somehow altered by JS -->
             </span>
         </div>
     </div>
 
     <div class="lives">
-        <h5>Guesses Left</h5>
+        <h5>Guesses Left: <span id="lives"></span></h5>
 
         <div class="lifeGraphic">
             <!-- CSS graphic from W3schools with bouncing shapes that dissapear as wrong letters are guessed -->
