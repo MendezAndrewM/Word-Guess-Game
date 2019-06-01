@@ -6,17 +6,16 @@ const words = ["regular", 'iregular']
 let randomWord = "";
 let wordLength = []
 let blanks = 0;
-let blanksAndCorrect = [];
+let solvedUnsolved = [];
 let wrongGuess = [];
 let wins = 0;
 let losses = 0;
 let guessesRemaining = 9;
 
 
+// Generate Word
+function gameStart() {
 
-function Game() {
-
-    //computer generates random word from words array in line 5
     randomWord = words[Math.floor(Math.random() * words.length)];
 
     // split the individual word into separate arrays, and store in new array 
@@ -25,20 +24,32 @@ function Game() {
     //store length of word in blanks, for later use
     const blanks = wordLength.length;
 
-    //creating a loop to generate "_" for each letter in array stored in blanks
+    //creating a loop to generate "_" for each letter in array stored in blanks and add them to the HTML
     for (var i = 0; i < blanks; i++) {
-        blanksAndCorrect.push("_");
+        solvedUnsolved.push("_");
+    }
+    // .innerHTML or .append?
+    $(".gameBoard").innerHTML = "  " + solvedUnsolved.join("  ");
+
+}
+
+
+//Game Start --Keep at bottom of page
+
+gameStart();
+
+document.onkeyup = function(event) {
+    
+    for ( let i = 0; i < randomWord.length; i++) {
+        if (randomWord[i] === event.key){
+            
+        }
+
     }
 
-    //showing the "_" within HTML
-    document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join("  ");
-
-    //console logging 
-    console.log(randomWord);
-    console.log(lettersOfWord);
-    console.log(blanks);
-    console.log(blanksAndCorrect);
 }
+
+
 
 
 
