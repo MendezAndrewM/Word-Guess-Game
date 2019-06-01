@@ -1,17 +1,13 @@
 // File wrapped with document.ready so the html & css load first
 $(document).ready(function() {
 
-//VARIABLES
+//Declaring variables
 const words = ["regular", 'iregular']
-
-//Empty variables to store values later
 let randomWord = "";
-let letterLength = []
+let wordLength = []
 let blanks = 0;
 let blanksAndCorrect = [];
 let wrongGuess = [];
-
-//Counter Variables
 let wins = 0;
 let losses = 0;
 let guessesRemaining = 9;
@@ -19,14 +15,15 @@ let guessesRemaining = 9;
 
 
 function Game() {
-    //computer generates random word from words array
+
+    //computer generates random word from words array in line 5
     randomWord = words[Math.floor(Math.random() * words.length)];
 
     // split the individual word into separate arrays, and store in new array 
-    lettersOfWord = randomWord.split("");
+    wordLength = randomWord.split("");
 
     //store length of word in blanks, for later use
-    blanks = lettersOfWord.length;
+    const blanks = wordLength.length;
 
     //creating a loop to generate "_" for each letter in array stored in blanks
     for (var i = 0; i < blanks; i++) {
