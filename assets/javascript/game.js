@@ -1,66 +1,79 @@
 // File wrapped with document.ready so the html & css load first
-$(document).ready(function() {
+$(document).ready(function () {
 
-//Declaring variables
-const words = ["regular", 'iregular']
-let randomWord = "";
-let wordLength = []
-let blanks = 0;
-let solvedUnsolved = [];
-let wrongGuess = [];
-let wins = 0;
-let losses = 0;
-let guessesRemaining = 9;
-
-
-// Generate Word
-function gameStart() {
-
-    randomWord = words[Math.floor(Math.random() * words.length)];
-
-    // split the individual word into separate arrays, and store in new array 
-    wordLength = randomWord.split("");
-
-    //store length of word in blanks, for later use
-    const blanks = wordLength.length;
-
-    //creating a loop to generate "_" for each letter in array stored in blanks and add them to the HTML
-    for (var i = 0; i < blanks; i++) {
-        solvedUnsolved.push("_");
-    }
-    // .innerHTML or .append?
-    $(".gameBoard").innerHTML = "  " + solvedUnsolved.join("  ");
-
-}
+    const game = {
+        wins: 0,
+        losses: 0,
+        words: ['regular', 'irregular'],
+        randomWord: "",
+        wordLength: [],
+        blanks: 0,
+        solvedUnsolved: [],
+        wrongGuess: [],
+        guessesRemaining: 5,
+        randomWord: function () {
+            theWord = words[Math.floor(Math.random() * words.length)];
+            wordLength = theWord.split('');
+            const blanks = wordLength.length;
+            for (var i = 0; i < blanks; i++) {
+                solvedUnsolved.push("_");
+            }
+            $(".gameBoard").innerHTML = "  " + solvedUnsolved.join("  ");
+        };
+        $("#currentWord").html("  " + solvedUnsolved.join("  "););,
 
 
-//Game Start --Keep at bottom of page
-
-gameStart();
-
-document.onkeyup = function(event) {
-    
-    for ( let i = 0; i < randomWord.length; i++) {
-        if (randomWord[i] === event.key){
-            
+        checkLetters: function(letter) {
+            const letterInWord = false;
+            for (var i = 0; i < blanks; i++) {
+                if (randomWord.theWord[i] == letter) {
+                    letterInWord = true;
+                }
+            }
+            if (letterInWord) {
+                for (var i = 0; i < blanks; i++) {
+                    if (randomWord.theWord[i] == letter) {
+                        solvedUnsolved[i] = letter;
+                    }
+                }
+            }
+            else {
+                wrongGuess.push(letter);
+                guessesRemaining--;
+            }
+        }
+        
+        complete: function() {
+            console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
+            if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
+                wins++;
+                // reset()
+                //display wins on screen
+                $("#winstracker").innerHTML = " " + wins;
+        
+                //if LOST...then alert and reset new round
+            } else if (guessesRemaining === 0) {
+                losses++;
+                reset()
+                document.getElementById("image").src = "./assets/images/try-again.png"
+                document.getElementById("losstracker").innerHTML = " " + losses;
+            }
+            //display losses on screen && guesses remaining countdown
+            document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
+            document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
         }
 
+
     }
 
-}
+    keyup(function() {
+        for (let i = 0; i < randomWord.theWord.length; i++l) {
+            const guesses = String.event.key.toUpperCase;
+            game.checkLetters(guesses);
+            winOrLoose();//need to be built
 
 
-
-
-
-
-
-
-
-
-
-
-
+    }
 
 
 
