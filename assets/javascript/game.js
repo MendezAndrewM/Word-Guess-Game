@@ -4,77 +4,84 @@ $(document).ready(function () {
     const game = {
         wins: 0,
         losses: 0,
-        words: ['regular', 'irregular'],
+        words: ['REGULAR', 'IRREGULAR'],
         randomWord: "",
         wordLength: [],
         blanks: 0,
         solvedUnsolved: [],
         wrongGuess: [],
         guessesRemaining: 5,
+
         randomWord: function () {
-            theWord = words[Math.floor(Math.random() * words.length)];
+            theWord = this.words[Math.floor(Math.random() * this.words.length)];
             wordLength = theWord.split('');
-            const blanks = wordLength.length;
-            for (var i = 0; i < blanks; i++) {
-                solvedUnsolved.push("_");
+            blanks = wordLength.length;
+            for (let i = 0; i < blanks; i++) {
+                this.solvedUnsolved.push("_");
             }
-            $(".gameBoard").innerHTML = "  " + solvedUnsolved.join("  ");
-        };
-        $("#currentWord").html("  " + solvedUnsolved.join("  "););,
+            $("#currentWord").html("  " + this.solvedUnsolved.join("  "));
+        },
+        // $("#currentWord").html("  " + solvedUnsolved.join("  "););,
 
 
-        checkLetters: function(letter) {
-            const letterInWord = false;
-            for (var i = 0; i < blanks; i++) {
-                if (randomWord.theWord[i] == letter) {
-                    letterInWord = true;
+        reset: function () {
+            this.guessesRemaining = 5;
+            this.wrongGuess = [];
+            this.solvedUnsolved = [];
+            this.randomWord()
+        },
+
+
+        checkLetters: function (letter) {
+            const correct = false;
+            for (let i = 0; i < this.blanks; i++) {
+                if (this.randomWord.theWord[i] == letter) {
+                    correct = true;
                 }
             }
-            if (letterInWord) {
-                for (var i = 0; i < blanks; i++) {
-                    if (randomWord.theWord[i] == letter) {
-                        solvedUnsolved[i] = letter;
+            if (correct) {
+                for (let i = 0; i < blanks; i++) {
+                    if (this.randomWord.theWord[i] == letter) {
+                        this.solvedUnsolved[i] = letter;
                     }
                 }
             }
             else {
-                wrongGuess.push(letter);
-                guessesRemaining--;
+                this.wrongGuess.push(letter);
+                this.guessesRemaining--;
             }
-        }
-        
-        complete: function() {
-            console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesRemaining)
-            if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
-                wins++;
-                // reset()
-                //display wins on screen
-                $("#winstracker").innerHTML = " " + wins;
-        
+        },
+
+        complete: function () {
+            console.log("wins:" + this.wins + "| losses:" + this.losses + "| guesses left:" + this.guessesRemaining)
+            if (this.wordLength.toString() == this.solvedUnsolved.toString()) {
+                this.wins++;
+                this.reset();
+                $("#winstracker").html(" " + this.wins); //Need to add Wins and Losses to HTML
+
                 //if LOST...then alert and reset new round
-            } else if (guessesRemaining === 0) {
-                losses++;
-                reset()
-                document.getElementById("image").src = "./assets/images/try-again.png"
-                document.getElementById("losstracker").innerHTML = " " + losses;
+            } else if (this.guessesRemaining === 0) {
+                this.losses++;
+                this.reset();
+                // $("image").src = "./assets/images/try-again.png"
+                $("#losstracker").html(" " + this.losses);
             }
             //display losses on screen && guesses remaining countdown
-            document.getElementById("currentword").innerHTML = "  " + blanksAndCorrect.join(" ");
-            document.getElementById("guessesremaining").innerHTML = " " + guessesRemaining;
+            $("currentword").innerHTML = "  " + this.solvedUnsolved.join(" ");
+            $("guessesremaining").innerHTML = " " + this.guessesRemaining;
         }
 
 
     }
 
-    keyup(function() {
-        for (let i = 0; i < randomWord.theWord.length; i++l) {
-            const guesses = String.event.key.toUpperCase;
+    game.randomWord()
+
+    $(document).keyup(function () {
+            const guesses = toString(event.key).toUpperCase();
             game.checkLetters(guesses);
-            winOrLoose();//need to be built
-
-
-    }
-
+            game.complete();
+            $("#letterGY").html("  " + this.wrongGuess.join(" "));
+    });
 
 
 });
