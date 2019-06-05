@@ -10,6 +10,7 @@ $(document).ready(function () {
         solvedUnsolved: [],
         wrongGuess: [],
         guessesRemaining: 6,
+        possibleChoices: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
 
         playWord: function () {
             this.randomWord = this.words[Math.floor(Math.random() * this.words.length)];
@@ -25,13 +26,45 @@ $(document).ready(function () {
             console.log(this.solvedUnsolved);
         },
 
-        //   Need to fix the checkLetters()  As it is, every guess is calculated as a wrong answer
-        checkLetters: function (letter) {
+
+        checkLetters: function (letter) { 
+    //Working version of function on line 63
+    // line 33 - 61 sends alert repeatedly forever   -- need fix and then delete line 63 - 82
+                // for (let i = 0; i < this.possibleChoices.length; i++) {       
+                //     let legit = false;
+                //     if (this.possibleChoices[i] == letter) { 
+                //         legit = true;
+                //         let correct = false;
+                //         for (let i = 0; i < this.blanks; i++) {
+                //             if (this.randomWord[i] == letter) {
+                //                 correct = true;
+                //                 console.log('correct!'); //seems to currently a mythical sernario
+                //             }
+                //         }
+                //         if (correct) {
+                //             for (let i = 0; i < blanks; i++) {
+                //                 if (this.randomWord[i] == letter) {
+                //                     this.solvedUnsolved[i] = letter;
+                //                 }
+                //             }
+                //         }
+                //         else {
+                //             this.wrongGuess.push(letter);
+                //             this.guessesRemaining--;
+                //             console.log('wrong!')
+                //         }
+                //     }
+                //     else {
+                //         alert('You must choose a letter in the alphebet!');
+                //     }
+                //     }
+                // },
+//   Need to fix the checkLetters()  As it is, every guess is calculated as a wrong answer
             let correct = false;
             for (let i = 0; i < this.blanks; i++) {
                 if (this.randomWord[i] == letter) {
                     correct = true;
-                    console.log('correct!');
+                    console.log('correct!'); //seems to currently a mythical sernario
                 }
             }
             if (correct) {
@@ -65,14 +98,12 @@ $(document).ready(function () {
             $("#lives").html(" " + this.guessesRemaining);
         },
 
-
         reset: function () {
             this.guessesRemaining = 6;
             this.wrongGuess = [];
             this.solvedUnsolved = [];
             this.playWord()
         }
-
 
     }
 
