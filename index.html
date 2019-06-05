@@ -27,16 +27,18 @@
             <div class="category">
                 <h4>Category: Types of Celery</h4>
             </div>
-
+            <!-- #currentWord needs additional CSS to make the text-size much larger text  -->
             <div class="gameBoard">
                 <h2 id='currentWord'></h2>
             </div>
         </div>
     </div>
 
+
+    <!-- Need to change the CSS around to make this look fancy and add a spot for an image -->
     <div class="helpInfo">
         <div class="instructions">
-            <span>Choose a letter from A to Z</span>
+            <span>Press any key to start guessing!</span>
         </div>
         <div class="hint">
             <p id="#hint">
@@ -45,20 +47,30 @@
         </div>
     </div>
 
+
+    <!-- Need to add CSS to put these in a shared inline block that sits to the left of #score, and romove the borders that are currently seperating them. -->
     <div class="lettersAll">
         <h5>Letters Guessed:</h5>
-
         <div class="lettersGuessed">
             <p id="letterGY"></p>
         </div>
     </div>
-
     <div class="lives">
         <h5>Guesses Left: <span id="lives"></span></h5>
-
         <div class="lifeGraphic">
-            <!-- CSS graphic from W3schools with bouncing shapes that dissapear as wrong letters are guessed -->
+            <!-- CSS graphic from freecodecamp.org with bouncing shapes that dissapear as wrong letters are guessed -->
         </div>
+    </div>
+
+    <!-- Need to add CSS to place scores inside an inline block to the right of #lettersAll -->
+    <div id="score">
+        <div id="winBox">
+            <span id="winTracker">0</span><span>Wins</span>
+        </div>
+        <div id="lossBox">
+            <span id="lossTracker">0</span><span>Losses</span>
+        </div>
+
     </div>
 
     <div id="scoreBoard">
@@ -67,10 +79,10 @@
     
 </section>
 
-
-<footer>
+<!-- Footer needs to move to the bottom of the page -->
+<!-- <footer>
     <span></span>
-</footer>
+</footer> -->
     
     
 </body>

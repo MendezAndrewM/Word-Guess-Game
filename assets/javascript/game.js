@@ -25,11 +25,13 @@ $(document).ready(function () {
             console.log(this.solvedUnsolved);
         },
 
+        //   Need to fix the checkLetters()  As it is, every guess is calculated as a wrong answer
         checkLetters: function (letter) {
             let correct = false;
             for (let i = 0; i < this.blanks; i++) {
                 if (this.randomWord[i] == letter) {
                     correct = true;
+                    console.log('correct!');
                 }
             }
             if (correct) {
@@ -42,6 +44,7 @@ $(document).ready(function () {
             else {
                 this.wrongGuess.push(letter);
                 this.guessesRemaining--;
+                console.log('wrong!')
             }
         },
 
@@ -50,12 +53,12 @@ $(document).ready(function () {
             if (this.wordLength.toString() == this.solvedUnsolved.toString()) {
                 this.wins++;
                 this.reset();
-                $("#winstracker").html(" " + this.wins); //Need to add Wins and Losses to HTML
+                $("#winTracker").html(" " + this.wins);
 
             } else if (this.guessesRemaining === 0) {
                 this.losses++;
                 this.reset();
-                $("#losstracker").html(" " + this.losses);
+                $("#lossTracker").html(" " + this.losses);
             }
             
             $("#currentWord").html("  " + this.solvedUnsolved.join(" "));
@@ -67,7 +70,7 @@ $(document).ready(function () {
             this.guessesRemaining = 6;
             this.wrongGuess = [];
             this.solvedUnsolved = [];
-            this.randomWord()
+            this.playWord()
         }
 
 
