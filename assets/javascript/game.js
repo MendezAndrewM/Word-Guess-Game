@@ -62,7 +62,7 @@ $(document).ready(function () {
 //   Need to fix the checkLetters()  As it is, every guess is calculated as a wrong answer
             let correct = false;
             for (let i = 0; i < this.blanks; i++) {
-                if (this.randomWord[i] == letter) {
+                if (this.randomWord[i] === letter) {
                     correct = true;
                     console.log('correct!'); //seems to currently a mythical sernario
                 }
@@ -81,6 +81,7 @@ $(document).ready(function () {
             }
         },
 
+        //Wins not being logged
         complete: function () {
             console.log("wins:" + this.wins + "| losses:" + this.losses + "| guesses left:" + this.guessesRemaining)
             if (this.wordLength.toString() == this.solvedUnsolved.toString()) {
