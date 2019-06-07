@@ -48,8 +48,7 @@
         </div>
 
 
-        <!-- Need to add CSS to put these in a shared inline block that sits to the left of #score, and romove the borders that are currently seperating them. -->
-        <div id="leftBox">
+          <div id="leftBox">
             <div class="lettersAll">
                 <h5>Letters Guessed:</h5>
                 <div class="lettersGuessed">
@@ -59,7 +58,9 @@
             <div class="lives">
                 <h5>Guesses Left: <span id="lives"></span></h5>
                 <div class="lifeGraphic">
-                    <!-- CSS graphic from freecodecamp.org with bouncing shapes that dissapear as wrong letters are guessed -->
+                    <!-- https://learn.freecodecamp.org/responsive-web-design/applied-visual-design/make-motion-more-natural-using-a-bezier-curve -->
+                    <!-- Need to correct CSS to make them bounce like they do in the link above -->
+                    <!-- Need to add JavaScript to make the disspaear as wrong guesses are made -->
                     <div class="ball" id="one"></div>
                     <div class="ball" id="two"></div>
                     <div class="ball" id="three"></div>
@@ -70,7 +71,6 @@
             </div>
         </div>
 
-        <!-- Need to add CSS to place scores inside an inline block to the right of #lettersAll -->
         <div id="rightBox">
             <div id="winBox">
                 <span id="winTracker">0 </span><span>Wins</span>
