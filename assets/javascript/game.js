@@ -14,8 +14,8 @@ $(document).ready(function () {
 
         playWord: function () {
             this.randomWord = this.words[Math.floor(Math.random() * this.words.length)];
-            wordLength = this.randomWord.split('');
-            this.blanks = wordLength.length;
+            this.wordLength = this.randomWord.split('');
+            this.blanks = this.wordLength.length;
             for (let i = 0; i < this.blanks; i++) {
                 this.solvedUnsolved.push("_");
             }
@@ -28,68 +28,70 @@ $(document).ready(function () {
 
 
         checkLetters: function (letter) {
-            //Working version of function on line 63
-            // line 33 - 61 sends alert repeatedly forever   -- need fix and then delete line 63 - 82
-            // for (let i = 0; i < this.possibleChoices.length; i++) {       
-            //     let legit = false;
-            //     if (this.possibleChoices[i] == letter) { 
-            //         legit = true;
-            //         let correct = false;
-            //         for (let i = 0; i < this.blanks; i++) {
-            //             if (this.randomWord[i] == letter) {
-            //                 correct = true;
-            //                 console.log('correct!'); //seems to currently a mythical sernario
-            //             }
-            //         }
-            //         if (correct) {
-            //             for (let i = 0; i < blanks; i++) {
-            //                 if (this.randomWord[i] == letter) {
-            //                     this.solvedUnsolved[i] = letter;
+            // Working version of function on line 64
+            // Need Fix --  sends alert repeatedly forever   
+            //         for (let i = 0; i < this.possibleChoices.length; i++) {
+            //             let legit = false;
+            //             if (this.possibleChoices[i] == letter) {
+            //                 legit = true;
+            //                 let correct = false;
+            //                 for (let i = 0; i < this.blanks; i++) {
+            //                     if (this.randomWord[i] == letter) {
+            //                         correct = true;
+            //                         console.log('correct!'); //seems to currently a mythical sernario
+            //                     }
             //                 }
+            //                 if (correct) {
+            //                     for (let i = 0; i < this.blanks; i++) {
+            //                         if (this.randomWord[i] == letter) {
+            //                             this.solvedUnsolved[i] = letter;
+            //                         }
+            //                     }
+            //                 }
+            //                 else {
+            //                     this.wrongGuess.push(letter);
+            //                     this.guessesRemaining--;
+            //                     console.log('wrong!')
+            //                 }
+
+            //             else {
+            //                 alert('You must choose a letter in the alphebet!');
             //             }
             //         }
-            //         else {
-            //             this.wrongGuess.push(letter);
-            //             this.guessesRemaining--;
-            //             console.log('wrong!')
-            //         }
-            //     }
-            //     else {
-            //         alert('You must choose a letter in the alphebet!');
-            //     }
             //     }
             // },
-            //   Need to fix the checkLetters()  As it is, every guess is calculated as a wrong answer
 
             let correct = false;
-            console.log(correct);
 
             for (let i = 0; i < this.blanks; i++) {
-                console.log('running loop');
+                // console.log('running loop');
                 if (this.randomWord[i] === letter) {
-                    console.log('correct should now ===true');
+                    // console.log('correct should now ===true');
                     correct = true;
-                    console.log('correct!'); //seems to be a mythical sernario
+                    // console.log('correct!'); 
                 }
             }
             if (correct) {
                 for (let i = 0; i < this.blanks; i++) {
                     if (this.randomWord[i] == letter) {
                         this.solvedUnsolved[i] = letter;
+                        console.log('solvedUnsolved: ' + this.solvedUnsolved);
+                        console.log('blanks: ' + this.blanks);
+                        console.log('wordLength: ' + this.wordLength);
                     }
                 }
             }
             else {
                 this.wrongGuess.push(letter);
                 this.guessesRemaining--;
-                console.log('wrong!')
+                // console.log('wrong!')
             }
         },
 
         //Wins not being logged
         complete: function () {
-            console.log("wins:" + this.wins + "| losses:" + this.losses + "| guesses left:" + this.guessesRemaining)
             if (this.wordLength.toString() == this.solvedUnsolved.toString()) {
+                console.log('its working!')
                 this.wins++;
                 this.reset();
                 $("#winTracker").html(" " + this.wins);
@@ -110,11 +112,11 @@ $(document).ready(function () {
             this.solvedUnsolved = [];
             this.playWord()
         }
-
+        
     }
 
     game.playWord()
-
+    console.log(game);
     $(document).keyup(function () {
         let guess = event.key.toUpperCase();
         game.checkLetters(guess);
