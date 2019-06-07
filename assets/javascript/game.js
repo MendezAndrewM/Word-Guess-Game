@@ -3,7 +3,7 @@ $('document').ready(function () {
     const game = {
         wins: 0,
         losses: 0,
-        words: ['REGULAR', 'IRREGULAR'],
+        words: ['REGULAR', 'IRREGULAR', 'EXPIRED'],
         randomWord: "",
         wordLength: [],
         blanks: 0,
@@ -104,7 +104,7 @@ $('document').ready(function () {
             }
 
             $("#currentWord").html("  " + this.solvedUnsolved.join(" "));
-            $("#lives").html(" " + this.guessesRemaining);
+            $(".ball").html(" " + this.guessesRemaining);
         },
 
         reset: function () {
@@ -112,6 +112,7 @@ $('document').ready(function () {
             this.wrongGuess = [];
             this.solvedUnsolved = [];
             this.playWord()
+            resetLives()
         }
         
     }
@@ -129,27 +130,41 @@ $('document').ready(function () {
     function livesLeft() {
         console.log(game.guessesRemaining)
         if (game.guessesRemaining === 5) {
-            $('#one').hide();
+            // $('#one').hide();
+            document.getElementById("one").style.display = "none";
         }
         if (game.guessesRemaining === 4) {
-            $('#two').hide();
+            // $('#two').hide();
+            document.getElementById("two").style.display = "none";
         }
         if (game.guessesRemaining === 3) {
-            $('#three').hide();
+            // $('#three').hide();
+            document.getElementById("three").style.display = "none";
         }
         if (game.guessesRemaining === 2) {
-            $('#four').hide();
+            // $('#four').hide();       
+            document.getElementById("four").style.display = "none";
         }
         if (game.guessesRemaining === 1) {
-            $('#five').hide();
+            // $('#five').hide();
+            document.getElementById("five").style.display = "none";
         }
         if (game.guessesRemaining === 0) {
-            $('#six').hide();
+            // $('#six').hide();
+            document.getElementById("six").style.display = "none";
         }
     }
-    
 
+    function resetLives() {
+        document.getElementById("one").style.display = "initial";
+        document.getElementById("two").style.display = "initial";
+        document.getElementById("three").style.display = "initial";
+        document.getElementById("four").style.display = "initial";
+        document.getElementById("five").style.display = "initial";
+        document.getElementById("six").style.display = "initial";
+    }
 
 });
+
 
 

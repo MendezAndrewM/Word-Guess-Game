@@ -113,6 +113,7 @@ h5 {
     animation-iteration-count: infinite;
     position: relative;
     animation: bounce 2s infinite;
+    text-align: center;
   }
 
   @keyframes bounce {
