@@ -1,4 +1,5 @@
-$('document').ready(function () {
+// $('document').ready(function () 
+window.addEventListener("load", function() {
 
     const game = {
         wins: 0,
@@ -19,7 +20,8 @@ $('document').ready(function () {
             for (let i = 0; i < this.blanks; i++) {
                 this.solvedUnsolved.push("_");
             }
-            $('#currentWord').html("  " + this.solvedUnsolved.join("  "));
+            // $('#currentWord').html("  " + this.solvedUnsolved.join("  "));
+            document.querySelector("#currentWord").innerText = "  " + this.solvedUnsolved.join("  ");
             console.log(this.randomWord);
             console.log(this.wordLength);
             console.log(this.blanks);
@@ -95,16 +97,20 @@ $('document').ready(function () {
                 // console.log('its working!')
                 this.wins++;
                 this.reset();
-                $("#winTracker").html(" " + this.wins);
+                // $("#winTracker").html(" " + this.wins);
+                document.querySelector("#winTracker").innerHTML = " " + this.wins;
 
             } else if (this.guessesRemaining === 0) {
                 this.losses++;
                 this.reset();
-                $("#lossTracker").html(" " + this.losses);
+                // $("#lossTracker").html(" " + this.losses);
+                document.querySelector("#lossTracker").innerHTML = " " + this.losses;
             }
 
-            $("#currentWord").html("  " + this.solvedUnsolved.join(" "));
-            $(".ball").html(" " + this.guessesRemaining);
+            // $("#currentWord").html("  " + this.solvedUnsolved.join(" "));
+            document.querySelector("#currentWord").innerHTML = "  " + this.solvedUnsolved.join(" ");
+            // $(".ball").html(" " + this.guessesRemaining);
+            document.querySelector(".ball").innerHTML = " " + this.guessesRemaining;
         },
 
         reset: function () {
@@ -123,7 +129,8 @@ $('document').ready(function () {
         let guess = event.key.toUpperCase();
         game.checkLetters(guess);
         game.complete();
-        $("#letterGY").html("  " + game.wrongGuess.join(" "));
+        // $("#letterGY").html("  " + game.wrongGuess.join(" "));
+        document.querySelector("#letterGY").innerHTML = "  " + game.wrongGuess.join(" ");
         console.log(guess);
     };
 
@@ -164,7 +171,7 @@ $('document').ready(function () {
         document.getElementById("six").style.display = "initial";
     }
 
-});
+}, false);
 
 
 
