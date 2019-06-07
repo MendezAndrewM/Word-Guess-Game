@@ -108,50 +108,58 @@ h5 {
     width: 50px;
     height: 50px;
     top: 60%;
-    animation-name: jump;
+    /* animation-name: jump; */
     animation-duration: 2s;
     animation-iteration-count: infinite;
+    position: relative;
+    animation: bounce 2s infinite;
   }
 
-@keyframes jump {
-    50% {
-      top: 50%;
-    }
-}
+  @keyframes bounce {
+     0%   {top: 0px;}
+    50%  {top: 50px;}
+    100%  {top: 0px}
+  }
 
   #one {
     background: rgb(144, 144, 207);
     position: absolute;
     left: 15%;
     animation-timing-function: ease-out;
+    animation-duration: 1.8s;
   }
   #two {
     background: rgb(144, 144, 207);
     position: absolute;
     left: 30%;
     animation-timing-function: ease-out;
+    animation-duration: 1.9s;
   }
   #three {
     background: rgb(144, 144, 207);
     position: absolute;
     left: 45%;
     animation-timing-function: ease-out;
+    animation-duration: 2s;
   }
   #four {
     background: rgb(144, 144, 207);
     position: absolute;
     left: 60%;
     animation-timing-function: ease-out;
+    animation-duration: 2.1s;
   }
   #five {
     background: rgb(144, 144, 207);
     position: absolute;
     left: 75%;
     animation-timing-function: ease-out;
+    animation-duration: 2.2s;
   }
   #six {
     background: rgb(144, 144, 207);
     position: absolute;
     left: 90%;
     animation-timing-function: ease-out;
+    animation-duration: 2.3s;
   }

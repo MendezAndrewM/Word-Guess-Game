@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$('document').ready(function () {
 
     const game = {
         wins: 0,
@@ -19,7 +19,7 @@ $(document).ready(function () {
             for (let i = 0; i < this.blanks; i++) {
                 this.solvedUnsolved.push("_");
             }
-            $("#currentWord").html("  " + this.solvedUnsolved.join("  "));
+            $('#currentWord').html("  " + this.solvedUnsolved.join("  "));
             console.log(this.randomWord);
             console.log(this.wordLength);
             console.log(this.blanks);
@@ -85,10 +85,11 @@ $(document).ready(function () {
                 this.wrongGuess.push(letter);
                 this.guessesRemaining--;
                 // console.log('wrong!')
+                livesLeft();
+
             }
         },
 
-        //Wins not being logged
         complete: function () {
             if (this.wordLength.toString() == this.solvedUnsolved.toString()) {
                 // console.log('its working!')
@@ -117,13 +118,38 @@ $(document).ready(function () {
 
     game.playWord()
     // console.log(game);
-    $(document).keyup(function () {
+    document.onkeydown = function (event) {
         let guess = event.key.toUpperCase();
         game.checkLetters(guess);
         game.complete();
         $("#letterGY").html("  " + game.wrongGuess.join(" "));
         console.log(guess);
-    });
+    };
+
+    function livesLeft() {
+        console.log(game.guessesRemaining)
+        if (game.guessesRemaining === 5) {
+            $('#one').hide();
+        }
+        if (game.guessesRemaining === 4) {
+            $('#two').hide();
+        }
+        if (game.guessesRemaining === 3) {
+            $('#three').hide();
+        }
+        if (game.guessesRemaining === 2) {
+            $('#four').hide();
+        }
+        if (game.guessesRemaining === 1) {
+            $('#five').hide();
+        }
+        if (game.guessesRemaining === 0) {
+            $('#six').hide();
+        }
+    }
+    
 
 
 });
+
+
