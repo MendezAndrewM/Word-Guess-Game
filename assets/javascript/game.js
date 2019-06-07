@@ -75,9 +75,9 @@ $(document).ready(function () {
                 for (let i = 0; i < this.blanks; i++) {
                     if (this.randomWord[i] == letter) {
                         this.solvedUnsolved[i] = letter;
-                        console.log('solvedUnsolved: ' + this.solvedUnsolved);
-                        console.log('blanks: ' + this.blanks);
-                        console.log('wordLength: ' + this.wordLength);
+                        // console.log('solvedUnsolved: ' + this.solvedUnsolved);
+                        // console.log('blanks: ' + this.blanks);
+                        // console.log('wordLength: ' + this.wordLength);
                     }
                 }
             }
@@ -91,7 +91,7 @@ $(document).ready(function () {
         //Wins not being logged
         complete: function () {
             if (this.wordLength.toString() == this.solvedUnsolved.toString()) {
-                console.log('its working!')
+                // console.log('its working!')
                 this.wins++;
                 this.reset();
                 $("#winTracker").html(" " + this.wins);
@@ -116,7 +116,7 @@ $(document).ready(function () {
     }
 
     game.playWord()
-    console.log(game);
+    // console.log(game);
     $(document).keyup(function () {
         let guess = event.key.toUpperCase();
         game.checkLetters(guess);

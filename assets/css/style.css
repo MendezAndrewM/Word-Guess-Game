@@ -31,6 +31,10 @@ h1 {
     color: #cae2ff;
 }
 
+h5 {
+    font-weight: bold;
+}
+
 .mainContent {
     align-content: center;
     display: block;
@@ -44,26 +48,64 @@ h1 {
 .box {
     /* border and padding to be removed when JS is added */
     border: solid 2px #1e2227;
-    padding-bottom: 134px; 
+    padding-bottom: 100px; 
     margin-bottom: 8px;
 }
 
 .gameBoard {
     text-align: center;
+    padding-top: 4rem;
 }
 
 .helpInfo {
     font-size: 16px;
-    border: dotted 2px #1e2227;
+    margin: 18px 0 18px;
+    /* border: dotted 2px #1e2227; */
 }
 
-.lettersAll {
+
+
+#currentWord {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+#leftBox {
     display: inline-block;
-    border: solid 2px #1e2227;
+    /* border: solid 2px #1e2227; */
+    width: 45%;
+    padding: 12px 4% 200px 0;
 
 }
 
-.lives {
+#rightBox {
     display: inline-block;
-    border: solid 2px #1e2227;
+    /* border: solid 2px #1e2227; */
+    width: 45%;
+    position: relative;
+    padding: 12px 0 200px 0;
 }
+
+#winBox {
+    font-size: 32px;
+    /* width: 40%; */
+    /* display: inline */
+}
+
+#lossBox {
+    font-size: 32px;
+    /* display: inline; */
+    /* width: 40%; */
+
+}
+
+/* .ball {
+    border-radius: 50%;
+    position: fixed;  
+    width: 50px;
+    height: 50px;
+    top: 60%;
+    animation-name: jump;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  } */
