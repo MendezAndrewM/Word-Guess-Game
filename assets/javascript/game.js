@@ -1,4 +1,4 @@
-// $('document').ready(function () 
+// $('document').ready(function () {
 window.addEventListener("load", function() {
 
     const game = {
@@ -23,9 +23,9 @@ window.addEventListener("load", function() {
             // $('#currentWord').html("  " + this.solvedUnsolved.join("  "));
             document.querySelector("#currentWord").innerText = "  " + this.solvedUnsolved.join("  ");
             console.log(this.randomWord);
-            console.log(this.wordLength);
-            console.log(this.blanks);
-            console.log(this.solvedUnsolved);
+            // console.log(this.wordLength);
+            // console.log(this.blanks);
+            // console.log(this.solvedUnsolved);
         },
 
 
@@ -110,7 +110,7 @@ window.addEventListener("load", function() {
             // $("#currentWord").html("  " + this.solvedUnsolved.join(" "));
             document.querySelector("#currentWord").innerHTML = "  " + this.solvedUnsolved.join(" ");
             // $(".ball").html(" " + this.guessesRemaining);
-            document.querySelector(".ball").innerHTML = " " + this.guessesRemaining;
+            document.getElementsByClassName("ball").innerHTML = " " + this.guessesRemaining;
         },
 
         reset: function () {
