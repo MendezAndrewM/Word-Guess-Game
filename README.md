@@ -1,2 +1,1 @@
-# Word-Guess-Game
-JavaScript Assignment 1 - Due June 6, 2019
+# (Word-Guess-Game)[https://mendezandrewm.github.io/Word-Guess-Game/]
